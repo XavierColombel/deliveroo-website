@@ -208,6 +208,13 @@ main {
   cursor: pointer;
 }
 
+.box .buttonCart.active:hover {
+  line-height: 46px;
+  color: #44d3c7;
+  background-color: white;
+  border: 2px solid #44d3c7;
+}
+
 .box .listEmpty {
   display: flex;
   align-items: center;
