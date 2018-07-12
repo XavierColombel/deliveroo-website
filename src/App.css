@@ -115,6 +115,11 @@ main {
   border-radius: 3px;
 }
 
+.item.inTheCart {
+  padding: 20px 20px 20px 15px;
+  border-left: 5px solid #44d3c7;
+}
+
 .item:hover {
   box-shadow: 0 0 30px rgba(57, 57, 57, 0.1);
   cursor: pointer;
@@ -141,6 +146,29 @@ main {
 .item span {
   font-size: 16px;
   line-height: 22px;
+}
+
+.quantity {
+  font-size: 14px;
+  color: #818184;
+  width: 20px;
+}
+
+.title {
+  display: flex;
+  align-items: flex-end;
+  line-height: 20px;
+}
+
+.mealTitle {
+  flex: 1;
+  font-size: 16px;
+  line-height: 22px;
+  font-family: "Adelle Sans";
+  font-weight: normal;
+  font-style: normal;
+  color: #2e3333;
+  margin: 0;
 }
 
 /* CART */

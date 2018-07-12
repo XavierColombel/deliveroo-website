@@ -4,6 +4,15 @@ import Cart from "./Cart";
 
 class Menu extends Component {
 
+    getQuantity = (id) => {
+        for (let i = 0; i < this.props.cart.length; i++) {
+            if (this.props.cart[i].id === id) {
+                return this.props.cart[i].quantity;
+            }
+
+        }
+    }
+
     render() {
         const keys = Object.keys(this.props.menu);
         const meals = [];
@@ -17,7 +26,11 @@ class Menu extends Component {
                     .props
                     .menu[key]
                     .forEach(meal => {
-                        items.push(<Meal key={meal.id} meal={meal} addMeal={this.props.addMeal}/>)
+                        items.push(<Meal
+                            key={meal.id}
+                            meal={meal}
+                            addMeal={this.props.addMeal}
+                            quantity={this.getQuantity(meal.id)}/>)
                     });
                 meals.push(
                     <ul key={`list-${key}`} className="items">{items}</ul>

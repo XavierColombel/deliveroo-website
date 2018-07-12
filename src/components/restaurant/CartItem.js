@@ -12,7 +12,7 @@ class CartItem extends Component {
                         onClick={() => this.props.updateQuantity(this.props.item.id, -1)}>
                         <i className="fas fa-minus-circle"></i>
                     </div>
-                    <div className="quantity">{this.props.item.quantity}</div>
+                    <div>{this.props.item.quantity}</div>
                     <div
                         className="increment"
                         onClick={() => this.props.updateQuantity(this.props.item.id, 1)}>

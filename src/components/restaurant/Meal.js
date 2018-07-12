@@ -10,10 +10,27 @@ class Meal extends Component {
                 src={`${this.props.meal.picture}?width=96&height=96&auto=webp&format=jpg&fit=crop`}
                 alt={this.props.meal.title}/>;
         }
+        let inTheCart = this.props.quantity
+            ? "inTheCart"
+            : "";
         return (
-            <li className="item" onClick={() => this.props.addMeal(this.props.meal)}>
+            <li
+                className={`item ${inTheCart}`}
+                onClick={() => this.props.addMeal(this.props.meal)}>
                 <div>
-                    <h3>{this.props.meal.title}</h3>
+                    <div className="title">
+                        {inTheCart
+                            ? <div className="quantity">{this.props.quantity} {" "}x
+                                </div>
+                            : null}
+                        <LinesEllipsis
+                            className="mealTitle"
+                            text={this.props.meal.title}
+                            maxLine='1'
+                            ellipsis="..."
+                            trimRight
+                            basedOn='letters'/>
+                    </div>
                     <LinesEllipsis
                         className="description"
                         text={this.props.meal.description}
