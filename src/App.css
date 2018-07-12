@@ -151,7 +151,7 @@ main {
 .quantity {
   font-size: 14px;
   color: #818184;
-  width: 20px;
+  padding-right: 5px;
 }
 
 .title {
