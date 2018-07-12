@@ -1,0 +1,317 @@
+@import "./assets/fonts/stylesheet.css";
+
+body {
+  font-family: "Adelle Sans";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 14px;
+  color: #818184;
+  -webkit-font-smoothing: antialiased;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h2 {
+  font-size: 28px;
+  line-height: 28px;
+  font-family: "Stratos Deliveroo Web";
+  font-weight: 600;
+  font-style: normal;
+  color: #2e3333;
+}
+
+h3 {
+  font-size: 16px;
+  line-height: 22px;
+  font-family: "Adelle Sans";
+  font-weight: normal;
+  font-style: normal;
+  color: #2e3333;
+  margin: 0;
+}
+
+.text-strong {
+  font-weight: 700;
+}
+
+.container {
+  width: 1124px;
+  margin: 0 auto;
+}
+
+/* HEADER */
+
+header {
+  display: flex;
+  align-items: center;
+  height: 60px;
+  border-bottom: solid 1px #e8ebeb;
+}
+
+.logo {
+  height: 40px;
+}
+
+/* BANNER */
+
+.banner {
+  display: flex;
+  padding: 20px 0;
+}
+
+.banner > .restaurantInfos {
+  flex: 1;
+  padding-right: 30px;
+}
+
+.banner > .restaurantImage > img {
+  width: 370px;
+  height: 160px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 3px;
+}
+
+/* MAIN */
+main {
+  display: flex;
+  background-color: #f3f5f5;
+  padding-top: 40px;
+}
+
+/* MENU RESTAURANT */
+
+.menu {
+  display: flex;
+}
+
+.meals {
+  flex: 1;
+}
+
+.cart {
+  width: 370px;
+}
+
+/* ITEMS */
+
+.items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item {
+  display: flex;
+  width: calc(50% - 30px);
+  margin: 0 30px 30px 0;
+  padding: 20px;
+  background-color: white;
+  box-sizing: border-box;
+  border-radius: 3px;
+}
+
+.item:hover {
+  box-shadow: 0 0 30px rgba(57, 57, 57, 0.1);
+  cursor: pointer;
+}
+
+.item > div {
+  flex: 1;
+}
+
+.item .description {
+  text-align: justify;
+  padding-right: 20px;
+  margin: 5px 0;
+}
+
+.item > img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: 3px;
+}
+
+.item span {
+  font-size: 16px;
+  line-height: 22px;
+}
+
+/* CART */
+
+.cart {
+  margin-top: -40px;
+}
+
+.isFixed {
+  position: fixed;
+  top: 0;
+}
+
+.box {
+  padding: 10px;
+  background-color: white;
+  box-sizing: border-box;
+  box-shadow: 0 0 30px rgba(57, 57, 57, 0.1);
+}
+
+.box .buttonCart {
+  color: #8c9b9b;
+  background-color: #bac3c3;
+  font-size: 16px;
+  line-height: 50px;
+  font-family: "Stratos Deliveroo Web";
+  font-weight: 600;
+  font-style: normal;
+  border-radius: 3px;
+  text-align: center;
+}
+
+.box .buttonCart.active {
+  color: white;
+  font-weight: 700;
+  background-color: #44d3c7;
+  cursor: pointer;
+}
+
+.box .listEmpty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+  min-height: 120px;
+  box-sizing: border-box;
+}
+
+.box .listFull {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+  height: 120px;
+  box-sizing: border-box;
+}
+
+/* CART ITEM */
+
+.cartItem {
+  display: flex;
+  font-size: 16px;
+  margin: 15px 0;
+}
+
+.cartItemButtons {
+  display: flex;
+  justify-content: space-between;
+  width: 60px;
+  margin-left: 10px;
+}
+
+.cartItemInfos {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.cartItemInfos > .description {
+  flex: 1;
+  color: #2e3333;
+  padding: 0 10px 0 15px;
+}
+
+.cartItemInfos > .price {
+  width: 60px;
+  color: #2e3333;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.cartItemButtons .increment svg,
+.cartItemButtons .decrement svg {
+  cursor: pointer;
+  color: #44d3c7;
+}
+
+/* SUBTOTAL | TOTAL */
+
+.subtotal hr {
+  height: 1px;
+  margin: 20px 10px;
+  background-color: #d1d7d7;
+  border: 0;
+}
+
+.total hr {
+  height: 5px;
+  margin: 20px 0;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#d1d7d7+1,d1d7d7+99&0+0,0.6+100 */
+  background: -moz-linear-gradient(
+    top,
+    rgba(209, 215, 215, 0) 0%,
+    rgba(209, 215, 215, 0.01) 1%,
+    rgba(209, 215, 215, 0.59) 99%,
+    rgba(209, 215, 215, 0.6) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-linear-gradient(
+    top,
+    rgba(209, 215, 215, 0) 0%,
+    rgba(209, 215, 215, 0.01) 1%,
+    rgba(209, 215, 215, 0.59) 99%,
+    rgba(209, 215, 215, 0.6) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(
+    to bottom,
+    rgba(209, 215, 215, 0) 0%,
+    rgba(209, 215, 215, 0.01) 1%,
+    rgba(209, 215, 215, 0.59) 99%,
+    rgba(209, 215, 215, 0.6) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00d1d7d7', endColorstr='#99d1d7d7',GradientType=0 ); /* IE6-9 */
+  border: 0;
+}
+
+.total,
+.subtotal {
+  font-size: 16px;
+  line-height: 30px;
+}
+
+.totalInfos,
+.subtotalInfos {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.totalInfos > .description,
+.subtotalInfos > .description {
+  flex: 1;
+  color: #2e3333;
+  padding: 0 10px 0 15px;
+}
+
+.totalInfos > .price,
+.subtotalInfos > .price {
+  width: 70px;
+  color: #2e3333;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.pourboire {
+  display: flex;
+  justify-content: space-between;
+  width: 50px;
+}
+
+.pourboire svg {
+  color: #44d3c7;
+  cursor: pointer;
+}
