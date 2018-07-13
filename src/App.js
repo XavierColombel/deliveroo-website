@@ -1,7 +1,8 @@
 import React, {Component, Fragment} from 'react';
 import {BrowserRouter as Router, Route, Link} from "react-router-dom";
-import Restaurant from "./components/Restaurant"
-import Header from "./components/Header"
+import Restaurant from "./components/Restaurant";
+import Checkout from "./components/Checkout";
+import Header from "./components/Header";
 import './App.css';
 
 class App extends Component {
@@ -11,7 +12,10 @@ class App extends Component {
       <Fragment>
         <Header/>
         <Router>
-          <Route exact path="/" component={Restaurant}/>
+          <Fragment>
+            <Route exact path="/" component={Restaurant}/>
+            <Route path="/checkout" component={Checkout}/>
+          </Fragment>
         </Router>
       </Fragment>
 

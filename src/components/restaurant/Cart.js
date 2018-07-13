@@ -1,4 +1,5 @@
-import React, {Component} from "react";
+import React, {Component, Fragment} from "react";
+import {BrowserRouter as Router, Route, Link} from "react-router-dom";
 import CartItem from "./CartItem";
 import Subtotal from "./Subtotal";
 import Total from "./Total";
@@ -6,34 +7,56 @@ import Total from "./Total";
 class Cart extends Component {
 
     render() {
-        /* console.log(this.props.cart); */
-        let list = <div className="listEmpty">Votre panier est vide</div>;
-        let activeClass = "";
+        /* console.log("Cart", this.props); */
+        let cart = <Fragment>
+            <div className="buttonCart">Valider mon panier</div>
+            <div className="listEmpty">Votre panier est vide</div>
+        </Fragment>;
         if (this.props.cart.length > 0) {
-            list = [];
+            cart = [];
+            !this.props.light
+                ? cart.push(
+                    <Link
+                        key="validateButton"
+                        to={{
+                        pathname: '/checkout',
+                        state: {
+                            cart: this.props.cart,
+                            shippingFees: this.props.shippingFees,
+                            tip: this.props.tip,
+                            restaurant: this.props.restaurant
+                        }
+                    }}>
+                        <div className="buttonCart active">Valider mon panier</div>
+                    </Link>
+                )
+                : null;
             this
                 .props
                 .cart
                 .forEach(item => {
-                    list.push(<CartItem key={item.id} item={item} updateQuantity={this.props.updateQuantity}/>)
+                    cart.push(<CartItem
+                        key={item.id}
+                        item={item}
+                        updateQuantity={this.props.updateQuantity}
+                        light={this.props.light}/>)
                 });
-            list.push(<Subtotal
+            cart.push(<Subtotal
                 key="subtotal"
                 cart={this.props.cart}
                 shippingFees={this.props.shippingFees}/>);
-            list.push(<Total
+            cart.push(<Total
                 key="total"
                 cart={this.props.cart}
                 shippingFees={this.props.shippingFees}
                 tip={this.props.tip}
-                updateTip={this.props.updateTip}/>);
-            activeClass = "active";
+                updateTip={this.props.updateTip}
+                light={this.props.light}/>);
         }
         return (
             <div className="cart">
                 <div className="box">
-                    <div className={`buttonCart ${activeClass}`}>Valider mon panier</div>
-                    {list}
+                    {cart}
                 </div>
             </div>
         );

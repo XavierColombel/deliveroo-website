@@ -42,6 +42,7 @@ class Menu extends Component {
                 <div className="container menu">
                     <div className="meals">{meals}</div>
                     <Cart
+                        restaurant={this.props.restaurant}
                         cart={this.props.cart}
                         shippingFees={this.props.shippingFees}
                         tip={this.props.tip}

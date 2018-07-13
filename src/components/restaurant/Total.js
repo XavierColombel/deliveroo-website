@@ -17,14 +17,16 @@ class Total extends Component {
                 <hr/>
                 <div className="totalInfos">
                     <div className="description">Pourboire au livreur</div>
-                    <div className="pourboire">
-                        <div className="decrement" onClick={() => this.props.updateTip(-1)}>
-                            <i className="fas fa-minus-circle"></i>
-                        </div>
-                        <div className="increment" onClick={() => this.props.updateTip(1)}>
-                            <i className="fas fa-plus-circle"></i>
-                        </div>
-                    </div>
+                    {!this.props.light
+                        ? <div className="pourboire">
+                                <div className="decrement" onClick={() => this.props.updateTip(-1)}>
+                                    <i className="fas fa-minus-circle"></i>
+                                </div>
+                                <div className="increment" onClick={() => this.props.updateTip(1)}>
+                                    <i className="fas fa-plus-circle"></i>
+                                </div>
+                            </div>
+                        : null}
                     <div className="price">{Price.format('fr-FR', 'EUR', this.props.tip)}</div>
                 </div>
                 <div className="totalInfos">

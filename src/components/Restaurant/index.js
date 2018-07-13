@@ -1,8 +1,8 @@
 import React, {Component} from "react";
 import axios from "axios";
 
-import Banner from "./restaurant/Banner";
-import Menu from "./restaurant/Menu";
+import Banner from "./Banner";
+import Menu from "./Menu";
 
 class Restaurant extends Component {
 
@@ -84,6 +84,7 @@ class Restaurant extends Component {
                     <Menu
                         addMeal={this.addMeal}
                         menu={this.state.menu}
+                        restaurant={this.state.restaurant}
                         cart={this.state.cart}
                         shippingFees={this.state.shippingFees}
                         tip={this.state.tip}

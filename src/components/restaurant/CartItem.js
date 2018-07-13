@@ -6,19 +6,21 @@ class CartItem extends Component {
         /* console.log(this.props.item); */
         return (
             <div className="cartItem">
-                <div className="cartItemButtons">
-                    <div
-                        className="decrement"
-                        onClick={() => this.props.updateQuantity(this.props.item.id, -1)}>
-                        <i className="fas fa-minus-circle"></i>
-                    </div>
-                    <div>{this.props.item.quantity}</div>
-                    <div
-                        className="increment"
-                        onClick={() => this.props.updateQuantity(this.props.item.id, 1)}>
-                        <i className="fas fa-plus-circle"></i>
-                    </div>
-                </div>
+                {!this.props.light
+                    ? <div className="cartItemButtons">
+                            <div
+                                className="decrement"
+                                onClick={() => this.props.updateQuantity(this.props.item.id, -1)}>
+                                <i className="fas fa-minus-circle"></i>
+                            </div>
+                            <div>{this.props.item.quantity}</div>
+                            <div
+                                className="increment"
+                                onClick={() => this.props.updateQuantity(this.props.item.id, 1)}>
+                                <i className="fas fa-plus-circle"></i>
+                            </div>
+                        </div>
+                    : null}
                 <div className="cartItemInfos">
                     <div className="description">{this.props.item.title}</div>
                     <div className="price">{Price.format('fr-FR', 'EUR', this.props.item.price * this.props.item.quantity)}</div>
