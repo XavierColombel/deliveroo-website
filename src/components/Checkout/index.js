@@ -12,6 +12,9 @@ class Checkout extends Component {
                 <div className="container checkout">
                     <div className="form"><Form
                         restaurant={this.props.location.state.restaurant}
+                        cart={this.props.location.state.cart}
+                        shippingFees={this.props.location.state.shippingFees}
+                        tip={this.props.location.state.tip}
                         updateForm={this.updateForm}/></div>
                     <div className="cart">
                         <Cart

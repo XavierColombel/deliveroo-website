@@ -3,27 +3,39 @@ import {Button, Checkbox, Form} from "semantic-ui-react"
 
 class CheckoutForm extends Component {
 
-    state = {
-        apt: "",
-        digicode: "",
-        codePostal: "",
-        ville: "",
-        telephone: "",
-        instructions: ""
+    constructor(props) {
+        super(props);
+        this.state = {
+            apt: "",
+            digicode: "",
+            adresse: "",
+            codePostal: "",
+            ville: "",
+            telephone: "",
+            instructions: "",
+            cart: props.cart,
+            shippingFees: props.shippingFees,
+            tip: props.tip
+        }
     }
 
     handleChange = (event) => {
         const name = event.target.name;
         const value = event.target.value;
-        const newState = {};
-        newState[name] = value;
-        this.setState(newState)
+        const updatedState = {};
+        updatedState[name] = value;
+        this.setState(updatedState)
+    }
+
+    handleSubmit = (event) => {
+        console.log(this.state);
+        event.preventDefault();
     }
 
     render() {
         return (
             <div className="checkoutForm">
-                <Form>
+                <Form onSubmit={this.handleSubmit}>
                     <h2>{this.props.restaurant.name}</h2>
                     <h3 className="text-strong text-center">Adresse de livraison</h3>
                     <Form.Group widths='equal'>
