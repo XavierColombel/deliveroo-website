@@ -1,5 +1,7 @@
 import React, {Component, Fragment} from "react";
+import {injectStripe, CardElement, CardNumberElement} from 'react-stripe-elements';
 import {Button, Checkbox, Form} from "semantic-ui-react"
+import axios from "axios"
 
 class CheckoutForm extends Component {
 
@@ -27,12 +29,53 @@ class CheckoutForm extends Component {
         this.setState(updatedState)
     }
 
-    handleSubmit = (event) => {
-        console.log(this.state);
-        event.preventDefault();
-    }
+    handleSubmit = (ev) => {
+        // We don't want to let default form submission happen here, which would refresh
+        // the page.
+        ev.preventDefault();
+
+        // Within the context of `Elements`, this call to createToken knows which
+        // Element to tokenize, since there's only one in this group.
+        this
+            .props
+            .stripe
+            .createToken({name: 'Jenny Rosen'})
+            .then(({token}) => {
+                console.log('Received Stripe token:', token);
+                axios.post("https://2e3da082.ngrok.io/api", {
+                    order: {
+                        ...this.state
+                    },
+                    token: token
+                }).then(response => {
+                    console.log("response", response.data);
+                }).catch(err => {
+                    console.log(err);
+                })
+            });
+
+        /*  */
+
+        // However, this line of code will do the same thing:
+        //
+        // this.props.stripe.createToken({type: 'card', name: 'Jenny Rosen'}); You can
+        // also use createSource to create Sources. See our Sources documentation for
+        // more: https://stripe.com/docs/stripe-js/reference#stripe-create-source
+        //
+        // this.props.stripe.createSource({type: 'card', name: 'Jenny Rosen'});
+    };
 
     render() {
+        this
+            .props
+            .stripe
+            .elements({
+                fonts: [
+                    {
+                        cssSrc: "https://fonts.googleapis.com/css?family=Open+Sans"
+                    }
+                ]
+            });
         return (
             <div className="checkoutForm">
                 <Form onSubmit={this.handleSubmit}>
@@ -91,6 +134,9 @@ class CheckoutForm extends Component {
                         value={this.state.instructions}
                         onChange={this.handleChange}
                         placeholder="Ex: C'est le local avec la façade noire, côté rue. Frappez à la porte vitrée."/>
+                    <CardNumberElement
+                        style={{/* base: { color: '#32325d', lineHeight: '18px', fontFamily: '"Stratos Deliveroo Web", Helvetica, sans-serif', fontSmoothing: 'antialiased', fontSize: '16px', '::placeholder': { color: '#aab7c4' } }, invalid: { color: '#fa755a', iconColor: '#fa755a' } */
+                    }}/>
                     <Button fluid type="submit">Confirmer et payer</Button>
                 </Form>
             </div>
@@ -98,4 +144,4 @@ class CheckoutForm extends Component {
     }
 }
 
-export default CheckoutForm;
+export default injectStripe(CheckoutForm);

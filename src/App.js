@@ -18,7 +18,6 @@ class App extends Component {
           </Fragment>
         </Router>
       </Fragment>
-
     );
   }
 
