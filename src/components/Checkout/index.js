@@ -13,7 +13,7 @@ class Checkout extends Component {
                 <Elements>
                     <main>
                         <div className="container checkout">
-                            <div className="form"><Form
+                            <div className="checkoutForm"><Form
                                 restaurant={this.props.location.state.restaurant}
                                 cart={this.props.location.state.cart}
                                 shippingFees={this.props.location.state.shippingFees}

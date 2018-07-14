@@ -1,6 +1,5 @@
 import React, {Component, Fragment} from "react";
 import {injectStripe, CardElement, CardNumberElement} from 'react-stripe-elements';
-import {Button, Checkbox, Form} from "semantic-ui-react"
 import axios from "axios"
 
 class CheckoutForm extends Component {
