@@ -9,7 +9,7 @@ class Cart extends Component {
     render() {
         /* console.log("Cart", this.props); */
         let cart = <Fragment>
-            <div className="buttonCart">Valider mon panier</div>
+            <button className="btn-deliveroo w-100 inactive">Valider mon panier</button>
             <div className="listEmpty">Votre panier est vide</div>
         </Fragment>;
         if (this.props.cart.length > 0) {
@@ -27,7 +27,7 @@ class Cart extends Component {
                             restaurant: this.props.restaurant
                         }
                     }}>
-                        <div className="buttonCart active">Valider mon panier</div>
+                        <div className="btn-deliveroo w-100">Valider mon panier</div>
                     </Link>
                 )
                 : null;
