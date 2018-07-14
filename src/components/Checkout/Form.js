@@ -66,82 +66,87 @@ class CheckoutForm extends Component {
     };
 
     render() {
-        this
-            .props
-            .stripe
-            .elements({
-                fonts: [
-                    {
-                        cssSrc: "https://fonts.googleapis.com/css?family=Open+Sans"
-                    }
-                ]
-            });
         return (
-            <div className="checkoutForm">
-                <Form onSubmit={this.handleSubmit}>
-                    <h2>{this.props.restaurant.name}</h2>
+            <Fragment>
+                <h2>{this.props.restaurant.name}</h2>
+                <form onSubmit={this.handleSubmit}>
                     <h3 className="text-strong text-center">Adresse de livraison</h3>
-                    <Form.Group widths='equal'>
-                        <Form.Input
-                            fluid
-                            label="Étage et numéro d'appartement"
-                            name="apt"
-                            value={this.state.apt}
+                    <div className="form-group">
+                        <div className="input-group">
+                            <label htmlFor="apt">Étage et numéro d'appartement</label>
+                            <input
+                                id="apt"
+                                name="apt"
+                                value={this.state.apt}
+                                onChange={this.handleChange}
+                                placeholder="Ex: Appartement n°15"/>
+                        </div>
+                        <div className="input-group">
+                            <label htmlFor="digicode">Digicode</label>
+                            <input
+                                id="digicode"
+                                name="digicode"
+                                placeholder="Ex: B123"
+                                value={this.state.digicode}
+                                onChange={this.handleChange}/>
+                        </div>
+                    </div>
+                    <div className="input-group">
+                        <label htmlFor="adresse">Adresse</label>
+                        <input
+                            id="adresse"
+                            name="adresse"
+                            value={this.state.adresse}
                             onChange={this.handleChange}
-                            placeholder="Ex: Appartement n°15"/>
-                        <Form.Input
-                            fluid
-                            label="Digicode"
-                            placeholder="Ex: B123"
-                            name="digicode"
-                            value={this.state.digicode}
-                            onChange={this.handleChange}/>
-                    </Form.Group>
-                    <Form.Input
-                        fluid
-                        label="Adresse"
-                        name="adresse"
-                        value={this.state.adresse}
-                        onChange={this.handleChange}
-                        placeholder="Ex: 42, rue des Orteaux"/>
-                    <Form.Group widths='equal'>
-                        <Form.Input
-                            fluid
-                            label="Code Postal"
-                            name="codePostal"
-                            value={this.state.codePostal}
+                            placeholder="Ex: 42, rue des Orteaux"/>
+                    </div>
+                    <div className="form-group">
+                        <div className="input-group">
+                            <label htmlFor="codePostal">Code postal</label>
+                            <input
+                                id="codePostal"
+                                name="codePostal"
+                                value={this.state.codePostal}
+                                onChange={this.handleChange}
+                                placeholder="Ex: 75020"/>
+                        </div>
+                        <div className="input-group">
+                            <label htmlFor="ville">Ville</label>
+                            <input
+                                id="ville"
+                                name="ville"
+                                value={this.state.ville}
+                                onChange={this.handleChange}
+                                placeholder="Ex: Paris"/>
+                        </div>
+                    </div>
+                    <div className="input-group">
+                        <label htmlFor="telephone">Numéro de téléphone</label>
+                        <input
+                            id="telephone"
+                            name="telephone"
+                            value={this.state.telephone}
                             onChange={this.handleChange}
-                            placeholder="Ex: 75020"/>
-                        <Form.Input
-                            fluid
-                            label="Ville"
-                            name="ville"
-                            value={this.state.ville}
+                            placeholder="Ex: 01 79 738 728"/>
+                    </div>
+                    <div className="input-group">
+                        <label htmlFor="telephone">Numéro de téléphone</label>
+                        <textarea
+                            label="Instructions pour votre livreur"
+                            name="instructions"
+                            value={this.state.instructions}
                             onChange={this.handleChange}
-                            placeholder="Ex: Paris"/>
-                    </Form.Group>
-                    <Form.Input
-                        fluid
-                        label="Numéro de téléphone"
-                        name="telephone"
-                        value={this.state.telephone}
-                        onChange={this.handleChange}
-                        placeholder="Ex: 01 79 738 728"/>
-                    <Form.TextArea
-                        fluid
-                        label="Instructions pour votre livreur"
-                        name="instructions"
-                        value={this.state.instructions}
-                        onChange={this.handleChange}
-                        placeholder="Ex: C'est le local avec la façade noire, côté rue. Frappez à la porte vitrée."/>
+                            placeholder="Ex: C'est le local avec la façade noire, côté rue. Frappez à la porte vitrée."/>
+                    </div>
                     <CardNumberElement
                         style={{/* base: { color: '#32325d', lineHeight: '18px', fontFamily: '"Stratos Deliveroo Web", Helvetica, sans-serif', fontSmoothing: 'antialiased', fontSize: '16px', '::placeholder': { color: '#aab7c4' } }, invalid: { color: '#fa755a', iconColor: '#fa755a' } */
                     }}/>
-                    <Button fluid type="submit">Confirmer et payer</Button>
-                </Form>
-            </div>
+                    <button className="btn-deliveroo w-100" type="submit">Confirmer et payer</button>
+                </form>
+            </Fragment>
         );
     }
+
 }
 
 export default injectStripe(CheckoutForm);
